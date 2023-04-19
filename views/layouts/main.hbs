@@ -19,19 +19,31 @@
     ></script>
   </head>
   <body>
+
     <div
       class="container mt-5 d-flex flex-column justify-content-center align-items-center"
     >
-      <a href="/" class="image text-decoration-none text-dark">
-        <h1 class="title">URL Shortener</h1>
-        <img
-          class="m-5"
-          style="width:150px;"
-          src="https://assets-lighthouse.alphacamp.co/uploads/image/file/16716/ExportedContentImage_00.png"
-          alt="URL Shortener Image"
-        />
-      </a>
-      {{{body}}}
+      {{#if errorMsg}}
+        <h1 class="title">{{errorMsg}}</h1>
+        <div
+          class="d-flex align-items-center my-3 w-50"
+          style="background-image: url('https://source.unsplash.com/sxiSod0tyYQ'); background-size: cover; height: 20rem;"
+        >
+        </div>
+        <a href="/" class="btn btn-secondary mt-3">Back</a>
+      {{else}}
+        <a href="/" class="text-decoration-none text-dark">
+          <h1 class="title">URL Shortener</h1>
+          <img
+            class="m-5"
+            style="width:150px;"
+            src="https://assets-lighthouse.alphacamp.co/uploads/image/file/16716/ExportedContentImage_00.png"
+            alt="URL Shortener Image"
+          />
+        </a>
+        {{{body}}}
+      {{/if}}
+
     </div>
   </body>
 </html>
