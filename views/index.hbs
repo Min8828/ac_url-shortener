@@ -1,20 +1,31 @@
 <form
   action="/"
+  method="POST"
   class="d-flex flex-column justify-content-center align-items-center"
   style="width: 20rem"
 >
-  <div class="input-group mb-3">
+
+  {{#if url}}
+    <div>
+      <h4 class="mb-3">Success! Please use this link:</h4>
+      <a href="/{{url.shortUrl}}">http://localhost/{{url.shortUrl}}</a>
+    </div>
+    <button type="button" class="btn btn-primary mt-3">Copy</button>
+  {{else}}
     <input
       type="text"
       class="form-control"
       placeholder="Input URL here"
       aria-label="Recipient's username"
       aria-describedby="basic-addon2"
+      name="fullUrl"
+      required
     />
-  </div>
-  <button
-    type="button"
-    class="btn btn-outline-primary"
-    style="width:10rem"
-  >Shorten</button>
+    <button
+      type="submit"
+      class="btn btn-outline-primary mt-2"
+      style="width:10rem"
+    >Shorten</button>
+  {{/if}}
+
 </form>
