@@ -12,13 +12,17 @@ require('./config/mongoose') // mongoose
 
 // setting template engine
 app.engine(
-  'hbs',
+  "hbs",
   engine({
-    layoutsDir: 'views/layouts', // directory to handlebars files
-    defaultLayout: 'main',
-    extname: 'hbs' // specify the file extension as .hbs
+    layoutsDir: "views/layouts", // directory to handlebars files
+    defaultLayout: "main",
+    extname: "hbs", // specify the file extension as .hbs
+    runtimeOptions: {
+      allowProtoPropertiesByDefault: true,
+      allowProtoMethodsByDefault: true,
+    },
   })
-)
+);
 app.set('view engine', 'hbs')
 
 // middleware
