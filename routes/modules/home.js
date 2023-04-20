@@ -25,9 +25,7 @@ router.post('/', async (req, res) => {
 router.get('/:shortUrl', async (req, res) => {
   try {
     const { shortUrl } = req.params
-    // const foundUrl = await ShortenUrl.findOne({ shortUrl
-    // }).lean().exec()
-    const foundUrl = ''
+    const foundUrl = await ShortenUrl.findOne({ shortUrl }).lean().exec()
 
     if (!foundUrl) {
       const errorMsg = 'Oops, Cannot found the page'
