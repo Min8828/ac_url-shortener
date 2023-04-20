@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { nanoid } = require('nanoid')
+const { customAlphabet } = require("nanoid");
 const ShortenUrl = require('../../models/shortUrl-modal')
 
 router.get('/', async (req, res) => {
@@ -14,7 +14,9 @@ router.post('/', async (req, res) => {
 
   try {
     const foundUrl = await ShortenUrl.findOne({ fullUrl }).lean().exec()
-    const shortUrl = nanoid(5)
+    let chars = 'abcdefghijklmnopqrstuvwxzy'
+    chars += chars.toUpperCase() + '0123456789'
+    const shortUrl = customAlphabet(chars, 5)()
     const url = foundUrl || (await ShortenUrl.create({ fullUrl, shortUrl }))
     res.render('show', { url })
   } catch {
