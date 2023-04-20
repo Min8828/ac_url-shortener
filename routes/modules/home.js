@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
     const foundUrl = await ShortenUrl.findOne({ fullUrl }).lean().exec()
     const shortUrl = nanoid(5)
     const url = foundUrl || (await ShortenUrl.create({ fullUrl, shortUrl }))
-    res.render('index', { url })
+    res.render('show', { url })
   } catch {
     (err) => console.log(err)
   }
@@ -29,7 +29,7 @@ router.get('/:shortUrl', async (req, res) => {
 
     if (!foundUrl) {
       const errorMsg = 'Oops, Cannot found the page'
-      return res.render('index', { errorMsg })
+      return res.render('error', { errorMsg })
     }
 
     return res.redirect(foundUrl.fullUrl)

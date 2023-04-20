@@ -1,0 +1,32 @@
+<a href="/" class="text-decoration-none text-dark">
+  <h1 class="title">URL Shortener</h1>
+  <img
+    class="m-5"
+    style="width:150px;"
+    src="https://assets-lighthouse.alphacamp.co/uploads/image/file/16716/ExportedContentImage_00.png"
+    alt="URL Shortener Image"
+  />
+</a>
+<div>
+  <h4 class="mb-3">Success! Please use this link:</h4>
+  <a
+    href="/{{url.shortUrl}}"
+    id="short-url"
+  >http://localhost/{{url.shortUrl}}</a>
+</div>
+<button type="button" class="btn btn-primary mt-3" id="copy-btn" onclick="copyLink()">Copy</button>
+
+{{! handle copy function }}
+<script>
+  function copyLink() { 
+    const url = document.getElementById("short-url")
+    const copyBtn = document.getElementById('copy-btn')
+    navigator.clipboard.writeText(url.innerText)
+      .then(() => {
+        copyBtn.classList.add('btn-secondary')
+        copyBtn.classList.remove('btn-primary')
+        copyBtn.textContent = 'Copied'
+      })
+      .catch(error => console.log(error)) 
+  }
+</script>
