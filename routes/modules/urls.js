@@ -15,8 +15,8 @@ router.post('/', async (req, res) => {
     const shortUrl = customAlphabet(chars, 5)()
     const url = foundUrl || (await ShortenUrl.create({ fullUrl, shortUrl }))
     res.render('show', { url })
-  } catch {
-    (err) => console.log(err)
+  } catch (err) {
+    console.log(err)
   }
 })
 
@@ -31,8 +31,8 @@ router.get('/:shortUrl', async (req, res) => {
     }
 
     return res.redirect(foundUrl.fullUrl)
-  } catch {
-    (err) => console.log(err)
+  } catch (err) {
+    console.log(err)
   }
 })
 
